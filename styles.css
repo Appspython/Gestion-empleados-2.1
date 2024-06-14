@@ -1,7 +1,0 @@
-body { font-family: Arial, sans-serif; } /* Estilo global del cuerpo del documento */
-.container { width: 80%; margin: auto; } /* Contenedor para centrar el contenido */
-table { width: 100%; border-collapse: collapse; } /* Estilo de la tabla */
-table, th, td { border: 1px solid #ddd; } /* Bordes de la tabla y celdas */
-th, td { padding: 10px; text-align: left; } /* Espaciado y alineación del texto en la tabla */
-th { background-color: #f2f2f2; } /* Color de fondo para los encabezados de la tabla */
-.btn { padding: 5px 10px; margin: 5px; cursor: pointer; } /* Estilo de los botones */
