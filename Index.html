@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Gestión de Empleados</title>
+<style>
+  body { font-family: Arial, sans-serif; }
+  .container { width: 80%; margin: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  table, th, td { border: 1px solid #ddd; }
+  th, td { padding: 10px; text-align: left; }
+  th { background-color: #f2f2f2; }
+  .btn { padding: 5px 10px; margin: 5px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Registro de Empleados</h1>
+  <button onclick="agregarEmpleado()">Agregar Empleado</button>
+  <table id="tablaEmpleados">
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Acciones</th>
+    </tr>
+  </table>
+</div>
+
+<script>
+// Datos iniciales de empleados
+var empleados = [
+  { id: 1, nombre: 'Juan Pérez' },
+  { id: 2, nombre: 'Ana Gómez' }
+];
+
+// Función para mostrar empleados en la tabla
+function mostrarEmpleados() {
+  var tabla = document.getElementById('tablaEmpleados');
+  tabla.innerHTML = `
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Acciones</th>
+    </tr>
+  `;
+  empleados.forEach(function(empleado) {
+    var fila = tabla.insertRow();
+    fila.innerHTML = `
+      <td>${empleado.id}</td>
+      <td>${empleado.nombre}</td>
+      <td>
+        <button class="btn" onclick="eliminarEmpleado(${empleado.id})">Eliminar</button>
+      </td>
+    `;
+  });
+}
+
+// Función para agregar un nuevo empleado
+function agregarEmpleado() {
+  var nombre = prompt('Ingrese el nombre del empleado:');
+  var nuevoId = empleados.length > 0 ? empleados[empleados.length - 1].id + 1 : 1;
+  empleados.push({ id: nuevoId, nombre: nombre });
+  mostrarEmpleados();
+}
+
+// Función para eliminar un empleado por su ID
+function eliminarEmpleado(id) {
+  empleados = empleados.filter(function(empleado) {
+    return empleado.id !== id;
+  });
+  mostrarEmpleados();
+}
+
+// Inicializar la visualización de empleados
+mostrarEmpleados();
+</script>
+
+</body>
+</html>
